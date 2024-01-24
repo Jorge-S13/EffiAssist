@@ -1,6 +1,7 @@
 <?php
 /** @var SergiX44\Nutgram\Nutgram $bot */
 
+use App\Telegram\Conversations\TaskConversation;
 use App\Telegram\Handlers\UpdateChatStatusHandler;
 use App\Telegram\Middleware\CheckMaintenance;
 use App\Telegram\Middleware\CollectChat;
@@ -34,6 +35,8 @@ $bot->middleware(CheckMaintenance::class);
 $bot->onCommand('start', function (Nutgram $bot) {
     $bot->sendMessage('Hello, world!');
 })->description('The start command!');
+
+$bot->onCommand('addtask', TaskConversation::class)->description('Add new task');
 
 /*
 |--------------------------------------------------------------------------

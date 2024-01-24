@@ -15,6 +15,11 @@ class Chat extends Model
         'started_at' => 'datetime',
         'blocked_at' => 'datetime',
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class,'chat_id','chat_id');
+    }
     public static function findFromUser(?User $user): ?Chat
     {
         if ($user === null) {
